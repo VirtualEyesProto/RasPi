@@ -6,7 +6,7 @@ set(SOURCES rtmServerDemo.cpp)
 set(HEADERS)
 
 set(TARGET_BUILD_TYPE "Debug")
-set(CMAKE_CXX_FLAGS "-fPIC -O2 -g -std=c++11 -msse2")
+set(CMAKE_CXX_FLAGS "-fPIC -O2 -g -std=c++11 -o3")
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 link_directories(${CMAKE_SOURCE_DIR}/lib)
