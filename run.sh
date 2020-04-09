@@ -1,5 +1,4 @@
 #!/bin/sh
-./rtm_src/rtmServerDemo
-firefox video/index.html
+firefox video/index.html & ./rtm_src/rtmServerDemo
 
 
