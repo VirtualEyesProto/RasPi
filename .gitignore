@@ -33,3 +33,6 @@
 # log & data
 *.log
 *.dat
+
+# for Mac
+.DS_Store
