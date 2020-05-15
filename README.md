@@ -15,10 +15,13 @@ sh run.sh
 - udp adress
   - 192.168.7.77:17777
 - recv msg
-  - `G %f %f %f %f %f S %f %f`
+  - `G %f %f %f %f %f %f S %f %f`
+  - Gyro msg means the angle of yaw, pitch and row. And the three floats after them is the angular velocity of yaw, pitch and row.
+  - Scroll msg means left/right(-1/1) and front/back(-1/1)
 - send msg
-  - quanter & angular velocity & wheel data
-  - `#q#%f;%f;%f;%f;%f!#w#%f;%f!`
-
+  - `#e#%f;%f;%f!#w#%f;%f;%f!`
+  - angle of yaw, pitch and row 
+  - wheel data of x, y, angle z 
+ 
 ## Debug
 - run.sh debug

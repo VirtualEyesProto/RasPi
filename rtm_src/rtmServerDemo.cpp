@@ -30,8 +30,8 @@
 using namespace std;
 
 #define APP_ID  "b33c94cb4537458a85c6c16cb9129037"
-#define USERID  "111"
-#define DSTID   "1000"
+#define USERID  "rasp"
+#define DSTID   "android"
 #define MS      1000
 
 #define DSET_IP_ADDRESS     "192.168.7.77"
@@ -79,7 +79,7 @@ private:
 
     void setCurMsg(char* str) {
         curMsg = str;
-        cout << "write curMsg:" << curMsg << endl;
+        // cout << "write curMsg:" << curMsg << endl;
 
         int send_num;
         char send_buf[BUFFER_LEN];
@@ -88,7 +88,7 @@ private:
 
         struct timeval tv;
         gettimeofday(&tv, NULL);
-        long ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+        long ms = tv.tv_sec * MS + tv.tv_usec / MS;
 
         cout << "time:" << ms << endl
              << "Move, send socket:" << send_buf << endl;
@@ -111,17 +111,16 @@ private:
         ssInput << msg;
         char ch;
         ssInput >> ch; // G
-        float quanter[4];
-        float angular;
-        float wheel[2];
-        ssInput >> quanter[0] >> quanter[1] >> quanter[2] >> quanter[3];
-        ssInput >> angular;
+        float angle[3];
+        float angVec[3];
+        float wheel[3];
+        ssInput >> angle[0] >> angle[1] >> angle[2];
+        ssInput >> angVec[0] >> angVec[1] >> angVec[2];
         ssInput >> ch >> wheel[0] >> wheel[1];
+        wheel[2] = 0;
 
-        ssOutput << "#q#" << quanter[0] << ";" << quanter[1] << ";" << quanter[2] << ";"
-            << quanter[3] << ";" << angular << "!#w#" << wheel[0] << ";" << wheel[1] << "!";
-        //string str = ssOutput.str();
-        //cout << str << endl;
+        ssOutput << "#e#" << angle[0] << ";" << angle[1] << ";" << angle[2] <<
+          "!#w#" << wheel[0] << ";" << wheel[1] << ";" << wheel[2] << "!";
         strcpy(send_buf, ssOutput.str().c_str());
     }
 
